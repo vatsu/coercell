@@ -2,7 +2,7 @@ require 'roo'
 require 'rubygems'
 
 require File.dirname(__FILE__) + '/lib/person.rb'
-require File.dirname(__FILE__) + '/xls.rb'
+require File.dirname(__FILE__) + '/xcel.rb'
 
 if ARGV.blank? 
 	puts "Usage: ruby parcer.rb file"
@@ -16,13 +16,19 @@ class ParserXcel
 		titles = xls.titles
 		content = xls.content(titles)
 
+		parsed = Array.new
 		errors_list = Array.new	
 
 		content.each_with_index do | p, i | 
 
 			person = model.new(p)
 
-			unless person.valid?
+			if person.valid?
+			
+				parsed << person
+				
+			else
+				
 				error = {} 
 				error['line'] = i	
 				error['errors']  = person.errors.full_messages
@@ -31,10 +37,11 @@ class ParserXcel
 
 		end
 		
-		unless errors_list.blank?
-			puts errors_list	
-		end
+		#unless errors_list.blank?
+		#	puts errors_list	
+		#end
 
+		puts parsed
 	end
 end
 xls = Xcel.new(ARGV.first)

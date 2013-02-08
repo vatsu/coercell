@@ -1,8 +1,6 @@
 require 'roo'
 require 'rubygems'
 
-require File.dirname(__FILE__) + '/lib/person.rb'
-
 class Xcel
 	
 	def load_xcel(file)
@@ -63,9 +61,5 @@ class Xcel
 			puts "Invalid Extension"
 			exit
 		end
-			
-	
 	end
-
-	
 end
