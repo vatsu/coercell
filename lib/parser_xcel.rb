@@ -1,6 +1,6 @@
 require "parser_xcel/version"
 
-module ParserXcel
+class ParserXcel
   
   def initialize(file, model)
     
