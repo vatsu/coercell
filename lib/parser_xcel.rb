@@ -1,5 +1,7 @@
 require "parser_xcel/version"
+require "roo"
 
+module ParserXcel
   class Xcel 
   
     def initialize(file, model)
@@ -76,4 +78,5 @@ require "parser_xcel/version"
     	end
       body
     end
+  end
 end
