@@ -4,11 +4,12 @@ require "roo"
 module ParserXcel
   class Xcel 
   
-    def initialize(file)
+    def initialize(file, model)
     
       @xcel = self.load_xcel(file)
 
       @content = self.content(self.titles)
+      @model = model
     
     end
   
@@ -16,12 +17,13 @@ module ParserXcel
       data = Array.new
       errors = Array.new
       @content.each_with_index do |p, i|
-        if model.new(p).valid?
-          data << model
+        tmp_data = model.new(p)
+        if tmp_data.valid? 
+          data << tmp_data
         else
           error = {}
           error['line'] = i+2
-          error['errors'] = model.errors.full_messages
+          error['errors'] = tmp_data.errors.full_messages
           errors << error
         end 
       end   
@@ -30,12 +32,12 @@ module ParserXcel
     end
     
     def data
-      self.check
+      self.check(@model)
       @data
     end
     
-    def errors
-      self.check
+    def list_errors
+      self.check(@model)
       @errors
     end
   
