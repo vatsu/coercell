@@ -4,39 +4,37 @@ require "roo"
 module ParserXcel
   class Xcel 
   
-    def initialize(file, model)
+    def initialize(file)
     
       @xcel = self.load_xcel(file)
-      @errors_list = Array.new
-      @parsed = Array.new
-      xcel_final = Array.new
-      content = self.content(self.titles)
+
+      @content = self.content(self.titles)
     
-      content.each_with_index do |p, i|
-      
-        person = model.new(p)
-        
-        if person.valid?
-          @parsed << person
+    end
+  
+    def check(model)
+      data = Array.new
+      errors = Array.new
+      @content.each_with_index do |p, i|
+        if model.new(p).valid?
+          data << model
         else
           error = {}
           error['line'] = i+2
-          error['errors']  = person.errors.full_messages
-          @errors_list << error
-        end
-      
-      end
-    
-      xcel_final
-    
+          error['errors'] = model.errors.full_messages
+          errors << error
+        end 
+      end   
+      @data = data
+      @errors = errors
     end
-  
+    
     def data
-      @parsed.each {|parsed| parsed}
+      @data
     end
-  
+    
     def errors
-      @errors_list.each {|error| error}
+      @errors
     end
   
     def load_xcel(file)
