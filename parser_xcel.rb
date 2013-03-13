@@ -19,7 +19,7 @@ class ParserXcel
         @parsed << person
       else
         error = {}
-        error['line'] = i  
+        error['line'] = i+2
         error['errors']  = person.errors.full_messages
         @errors_list << error
       end
@@ -71,9 +71,9 @@ class ParserXcel
 	
   	  titles.each_with_index do | title, i |
   			content_line[title] = @xcel.cell(line, i+1)	
-  			body << content_line
+  			
   	  end
-        
+      body << content_line
   	end
     body
   end
