@@ -30,10 +30,12 @@ module ParserXcel
     end
     
     def data
+      self.check
       @data
     end
     
     def errors
+      self.check
       @errors
     end
   
