@@ -1,7 +1,6 @@
-require 'roo'
-require 'rubygems'
+require "parser_xcel/version"
 
-class ParserXcel
+module ParserXcel
   
   def initialize(file, model)
     
