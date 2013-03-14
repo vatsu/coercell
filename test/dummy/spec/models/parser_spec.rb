@@ -18,7 +18,7 @@ end
   describe "content" do
     
     it "returns a ParserXcel Array of Model Objects" do
-      @parsed.data.first.should be_an_instance_of @model
+      @parsed.data.first.first.should be_an_instance_of @model
     end
     
   end
@@ -26,15 +26,15 @@ end
   describe "list errors" do
     
     it "returns a Array of errors" do
-      @parsed.list_errors.should be_an_instance_of Array
+      @parsed.data[1].first.should be_an_instance_of Hash
     end 
     
     it "returns errors line" do
-      @parsed.list_errors.first["line"].should_not be_nil
+      @parsed.data[1].first["line"].should_not be_nil
     end
     
     it "returns errors error" do
-      @parsed.list_errors.first["errors"].first.should_not be_nil
+      @parsed.data[1].first["errors"].should be_an_instance_of Array
     end
     
   end
