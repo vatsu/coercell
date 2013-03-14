@@ -13,32 +13,22 @@ module ParserXcel
     
     end
   
-    def check(model)
+    def data
       data = Array.new
-      errors = Array.new
+
       @content.each_with_index do |p, i|
-        tmp_data = model.new(p)
-        if tmp_data.valid? 
-          data << tmp_data
-        else
+        tmp_data = @model.new(p)
+         
+        unless tmp_data.valid? 
           error = {}
           error['line'] = i+2
           error['errors'] = tmp_data.errors.full_messages
-          errors << error
-        end 
-      end   
-      @data = data
-      @errors = errors
-    end
-    
-    def data
-      self.check(@model)
-      @data
-    end
-    
-    def list_errors
-      self.check(@model)
-      @errors
+        end
+        data << {"data" => tmp_data, "errors" => error}
+      end  
+       
+      data
+      
     end
   
     def load_xcel(file)
