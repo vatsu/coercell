@@ -15,19 +15,21 @@ module ParserXcel
   
     def data
       data = Array.new
-
+      errors = Array.new
       @content.each_with_index do |p, i|
         tmp_data = @model.new(p)
-         
-        unless tmp_data.valid? 
+        if tmp_data.valid? 
+          data << tmp_data
+        else
           error = {}
           error['line'] = i+2
           error['errors'] = tmp_data.errors.full_messages
+          errors << error
         end
-        data << {"data" => tmp_data, "errors" => error}
+        
       end  
        
-      data
+      return data, errors
       
     end
   
