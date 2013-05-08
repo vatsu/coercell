@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    parser_xcel (0.0.1)
+    coercell (0.0.2)
       rails (~> 3.2.13)
       roo
 
@@ -52,9 +52,9 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     method_source (0.8.1)
-    mime-types (1.21)
+    mime-types (1.23)
     multi_json (1.7.1)
-    nokogiri (1.5.7)
+    nokogiri (1.5.9)
     polyglot (0.3.3)
     pry (0.9.12)
       coderay (~> 1.0.5)
@@ -87,9 +87,9 @@ GEM
     rake (10.0.3)
     rdoc (3.12.2)
       json (~> 1.4)
-    roo (1.10.3)
-      nokogiri (>= 1.5.6)
-      rubyzip (>= 0.9.9)
+    roo (1.11.2)
+      nokogiri
+      rubyzip
       spreadsheet (> 0.6.4)
     rspec-core (2.13.1)
     rspec-expectations (2.13.0)
@@ -105,7 +105,7 @@ GEM
     ruby-ole (1.2.11.6)
     rubyzip (0.9.9)
     slop (3.4.4)
-    spreadsheet (0.8.3)
+    spreadsheet (0.8.5)
       ruby-ole (>= 1.0)
     sprockets (2.2.2)
       hike (~> 1.2)
@@ -124,8 +124,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  coercell!
   jquery-rails
-  parser_xcel!
   pry-rails
   rspec-rails
   sqlite3

@@ -1,7 +1,7 @@
 require 'roo'
-require 'parser_xcel/value'
+require 'coercell/value'
 
-module ParserXcel
+module Coercell
   class Parser
 
     def initialize(model)
@@ -9,24 +9,21 @@ module ParserXcel
     end
 
     def prepare_content(start=2)
-      @content ||= (start..@xcel.last_row).collect do |line|
+      @content ||= (start..spreadsheet.last_row).collect do |line|
         content_line = {}
         titles.each do |title|
-          content_line[title[:value]] = ParserXcel::Value.coerce( @model,
-                                                                   title[:value],
-                                                                   @xcel.cell(line, title[:column])
-                                                                 )
+          content_line[title[:value]] = get_cell_value(title,line)
         end
         content_line
       end
     end
 
-    def parse
+    def parse!
       data = []
       errors = []
 
       prepare_content
-
+      
       @content.each_with_index do |line_data, i|
         instance = @model.new(line_data)
         if instance.valid?
@@ -39,13 +36,26 @@ module ParserXcel
         end
       end
 
-      { :objects => data, :errors => errors }
+      @valid_objects = data 
+      @errors = errors
     end
 
-    def load_xcel(file)
+    def errors
+      @errors
+    end
+
+    def valid_objects
+      @valid_objects
+    end
+
+    def spreadsheet
+      @spreadsheet
+    end
+
+    def spreadsheet=(file)
       extension = File.extname(file)[1..-1].downcase
 
-      @xcel = case extension
+      @spreadsheet = case extension
               when "ods"
                 Roo::Openoffice.new(file)
               when "xls"
@@ -55,18 +65,26 @@ module ParserXcel
               else
                 raise ArgumentError, "Provided file must be Openffice(.ods) or Excel(.xls or .xlsx). .#{extension} is not valid"
               end
-
     end
+
+    private
 
     def titles
       attributes = @model.attribute_names
 
-      @titles ||= ((1..@xcel.last_column).collect do |column|
-        value = @xcel.cell(1,column).strip #getting content from first line
+      @titles ||= ((1..spreadsheet.last_column).collect do |column|
+        value = spreadsheet.cell(1,column).strip #getting content from first line
         { :column => column, :value => value } if attributes.include? value
       end).compact
 
       @titles
+    end
+
+ 
+    def get_cell_value(title,line)
+      Coercell::Value.coerce( @model,
+                              title[:value],
+                              @spreadsheet.cell(line, title[:column]) )
     end
   end
 end

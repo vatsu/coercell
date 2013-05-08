@@ -1,12 +1,12 @@
-# ParserXcel
+# Coercell
 
-TODO: Write a gem description
+A spreadsheet parser and importer to ActiveRecord models
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
-    gem 'parser_xcel'
+    gem 'coercell'
 
 And then execute:
 
@@ -14,11 +14,17 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install parser_xcel
+    $ gem install coercell
 
 ## Usage
 
-TODO: Write usage instructions here
+    parser = Coercell::Parser.new(YourModel)
+    parser.spreadsheet = "path/top/spreadsheet.xls"
+
+    parser.parse!
+
+    errors = parser.errors
+    valid = parser.valid
 
 ## Contributing
 

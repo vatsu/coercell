@@ -1,15 +1,18 @@
 $:.push File.expand_path("../lib", __FILE__)
 
-require "parser_xcel/version"
+require "coercell/version"
 
 Gem::Specification.new do |s|
-  s.name        = "parser_xcel"
-  s.version     = ParserXcel::VERSION
+  s.name        = "coercell"
+  s.version     = Coercell::VERSION
   s.authors     = ["Rafael Barros","Gustavo Sales"]
   s.email       = ["rafael.barros@jazz.etc.br","vatsu21@gmail.com"]
-  s.homepage    = ""
-  s.summary     = "A parser xls/xlsx/ods validating with model"
-  s.description = ""
+  s.homepage    = "https://github.com/jzup/coercell"
+  s.summary     = "A spreadsheet parser and importer to ActiveRecord models"
+  s.description = <<-EOS
+                      Parses spreadsheets, validates its data against ActiveRecord model 
+                      and instanciates valid data
+                  EOS
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
 

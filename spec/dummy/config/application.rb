@@ -9,7 +9,7 @@ require "active_resource/railtie"
 # require "rails/test_unit/railtie"
 
 Bundler.require(*Rails.groups)
-require "parser_xcel"
+require "coercell"
 
 module Dummy
   class Application < Rails::Application

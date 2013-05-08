@@ -1,4 +1,4 @@
-module ParserXcel
+module Coercell
   module Value
     def self.coerce(model,attribute_name,value)
       attribute_type = (model.columns.select { |a| a.name == attribute_name }).first.type
