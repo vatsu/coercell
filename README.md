@@ -19,7 +19,7 @@ Or install it yourself as:
 ## Usage
 
     parser = Coercell::Parser.new(YourModel)
-    parser.spreadsheet = "path/top/spreadsheet.xls"
+    parser.spreadsheet = "path/to/spreadsheet.xls"
 
     parser.parse!
 
