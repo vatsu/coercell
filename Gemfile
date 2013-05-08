@@ -9,3 +9,7 @@ gemspec
 gem "jquery-rails"
 gem "pry-rails"
 
+group :test do 
+	gem 'rake'
+end
+

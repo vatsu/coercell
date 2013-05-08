@@ -127,5 +127,6 @@ DEPENDENCIES
   coercell!
   jquery-rails
   pry-rails
+  rake
   rspec-rails
   sqlite3

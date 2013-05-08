@@ -9,7 +9,7 @@ end
   describe "processing xls file" do
     it "returns apropriated ROO object" do
       parser = Coercell::Parser.new(@model)
-      parser.spreadsheet = "public/test_file.xls"
+      parser.spreadsheet = 'spec/dummy/public/test_file.xls'
       parser.spreadsheet.should be_an_instance_of Roo::Excel
     end
   end
@@ -17,7 +17,7 @@ end
   describe "processing xlsx file" do
     it "returns apropriated ROO object" do
       parser = Coercell::Parser.new(@model)
-      parser.spreadsheet = "public/test_file.xlsx"
+      parser.spreadsheet = 'spec/dummy/public/test_file.xlsx'
       parser.spreadsheet.should be_an_instance_of Roo::Excelx
     end
   end
@@ -25,7 +25,7 @@ end
   describe "processing ods file" do
     it "returns apropriated ROO object" do
       parser = Coercell::Parser.new(@model)
-      parser.spreadsheet = "public/test_file.ods"
+      parser.spreadsheet = 'spec/dummy/public/test_file.ods'
       parser.spreadsheet.should be_an_instance_of Roo::Openoffice
     end
   end
@@ -34,7 +34,7 @@ end
     describe "with only valid records" do
       before :each do
         @parser = Coercell::Parser.new(@model)
-        @parser.spreadsheet = 'public/valid_file.xls'
+        @parser.spreadsheet = 'spec/dummy/public/valid_file.xls'
         @parsed_data = @parser.parse!
       end
 
@@ -62,7 +62,7 @@ end
     describe "with both valid and invalid records" do
        before :each do
         @parser = Coercell::Parser.new(@model)
-        @parser.spreadsheet = 'public/half_valid_file.xls'
+        @parser.spreadsheet = 'spec/dummy/public/half_valid_file.xls'
         @parsed_data = @parser.parse!
       end
 
