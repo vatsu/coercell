@@ -24,7 +24,7 @@ Or install it yourself as:
     parser.parse!
 
     errors = parser.errors
-    valid = parser.valid
+    valid = parser.valid_objects
 
 ## Contributing
 
