@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.version     = Coercell::VERSION
   s.authors     = ["Rafael Barros","Gustavo Sales"]
   s.email       = ["rafael.barros@jazz.etc.br","vatsu21@gmail.com"]
-  s.homepage    = "https://github.com/jzup/coercell"
+  s.homepage    = "https://github.com/inovecomjazz/coercell"
   s.summary     = "A spreadsheet parser and importer to ActiveRecord models"
   s.description = <<-EOS
                       Parses spreadsheets, validates its data against ActiveRecord model 
