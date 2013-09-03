@@ -4,6 +4,7 @@ PATH
     coercell (0.0.3)
       rails (~> 3.2.13)
       roo
+      rubyzip (< 1)
 
 GEM
   remote: http://rubygems.org/
@@ -104,7 +105,7 @@ GEM
       rspec-expectations (~> 2.14.0)
       rspec-mocks (~> 2.14.0)
     ruby-ole (1.2.11.7)
-    rubyzip (1.0.0)
+    rubyzip (0.9.9)
     slop (3.4.6)
     spreadsheet (0.8.9)
       ruby-ole (>= 1.0)
