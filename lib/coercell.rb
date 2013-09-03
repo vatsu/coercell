@@ -57,7 +57,7 @@ module Coercell
 
       @spreadsheet = case extension
               when "ods"
-                Roo::Openoffice.new(file)
+                Roo::OpenOffice.new(file)
               when "xls"
                 Roo::Excel.new(file)
               when "xlsx"
