@@ -1,4 +1,4 @@
-# Coercell [![Code Climate](https://codeclimate.com/github/jzup/coercell.png)](https://codeclimate.com/github/jzup/coercell) [![Build Status](https://travis-ci.org/jzup/coercell.png)](https://travis-ci.org/jzup/coercell)
+# Coercell [![Code Climate](https://codeclimate.com/github/jzup/coercell.png)](https://codeclimate.com/github/jzup/coercell) [![Build Status](https://travis-ci.org/inovecomjazz/coercell.png?branch=master)](https://travis-ci.org/inovecomjazz/coercell)
 
 A spreadsheet parser and importer to ActiveRecord models
 
