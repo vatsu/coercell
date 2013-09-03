@@ -3,7 +3,7 @@ PATH
   specs:
     coercell (0.0.3)
       rails (~> 3.2.13)
-      roo
+      roo (~> 1.12.1)
       rubyzip (< 1)
 
 GEM
